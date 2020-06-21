@@ -57,7 +57,18 @@ public class FXMLController {
 
     @FXML
     void doTrovaAnnataOro(ActionEvent event) {
-
+    	txtResult.clear();
+    	Team squadra = boxSquadra.getValue();
+    	if (squadra == null) {
+    		txtResult.appendText("Selezionare una squadra!");
+    		return;
+    	}
+    	
+    	this.model.creaGrafo();
+    	txtResult.appendText("Grafo creato!\n");
+    	txtResult.appendText("# Vertici: "+this.model.vertexNumber()+" # Archi: "+this.model.edgeNumber()+"\n");
+    	txtResult.appendText("Annata d'oro: \n");
+    	txtResult.appendText(this.model.annataOro().toString());
     }
 
     @FXML
